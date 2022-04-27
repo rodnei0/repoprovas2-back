@@ -9,7 +9,7 @@ async function find(req: Request, res: Response) {
   }
 
   const tests = await testService.find({ groupBy });
-  res.send({ tests });
+  res.status(200).send({ tests });
 }
 
 export default {
