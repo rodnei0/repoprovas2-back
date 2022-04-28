@@ -11,9 +11,11 @@ export async function ensureAuthenticatedMiddleware(
   next: NextFunction
 ) {
   const authorization = req.headers["authorization"];
+  // console.log(req.headers)
   if (!authorization) throw unauthorizedError("Missing authorization header");
 
   const token = authorization.replace("Bearer ", "");
+  // console.log(token)
   if (!token) throw unauthorizedError("Missing token");
 
   try {
@@ -21,10 +23,12 @@ export async function ensureAuthenticatedMiddleware(
       userId: number;
     };
     const user = await userService.findById(userId);
+    // console.log(user)
     res.locals.user = user;
 
     next();
   } catch {
+    // console.log('aqui')
     throw unauthorizedError("Invalid token");
   }
 }
