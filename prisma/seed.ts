@@ -1,14 +1,24 @@
 import prisma from "../src/database.js";
+import { faker } from "@faker-js/faker";
 
 async function main() {
     await prisma.category.deleteMany();
     await prisma.category.createMany({
         data: [
-            { name: 'P1' },
-            { name: 'P2' },
-            { name: 'P3' }
+            { name: faker.lorem.word() },
+            { name: faker.lorem.word() },
+            { name: faker.lorem.word() }
         ]
     });
+    
+    // await prisma.category.deleteMany();
+    // await prisma.category.createMany({
+    //     data: [
+    //         { name: faker.lorem.word() },
+    //         { name: faker.lorem.word() },
+    //         { name: faker.lorem.word() }
+    //     ]
+    // });
 }
 
 main()

@@ -1,4 +1,4 @@
-import { Router } from "express";
+ import { Router } from "express";
 import categoryController from "../controllers/categoryController.js";
 import { ensureAuthenticatedMiddleware } from "../middlewares/ensureAuthenticatedMiddleware.js";
 
